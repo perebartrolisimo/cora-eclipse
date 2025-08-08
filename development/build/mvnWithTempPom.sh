@@ -50,7 +50,7 @@ buildParentSeparatelyFirstAsMavenNeedsItForBuilding(){
 }
 
 cleanInstallAllUsingTempPomFile(){
-	mvn -T 4C -f ~/workspace/tempPom.xml clean install ${profile} | tee tempPom.log
+	mvn -T 1.5C -f ~/workspace/tempPom.xml clean install ${profile} | tee tempPom.log
 }	
 
 # ################# calls start here #######################################

@@ -67,8 +67,8 @@
   <setupTask
       xsi:type="setup:VariableTask"
       name="eclipse.target.platform"
-      value="2025-03"
-      defaultValue="2025-03"
+      value="2025-09"
+      defaultValue="2025-09"
       storageURI="scope://Workspace"/>
   <setupTask
       xsi:type="setup.p2:P2Task">
@@ -1432,6 +1432,70 @@
     </setupTask>
     <setupTask
         xsi:type="setup:CompoundTask"
+        name="cora-docker-apache">
+      <setupTask
+          xsi:type="maven:MavenImportTask">
+        <sourceLocator
+            rootFolder="${git.clone.cora.docker.apache.location}"
+            locateNestedProjects="true"/>
+      </setupTask>
+      <setupTask
+          xsi:type="git:GitCloneTask"
+          id="git.clone.cora.docker.apache"
+          location="${workspace.location}/cora-docker-apache"
+          remoteURI="https://github.com/lsu-ub-uu/cora-docker-apache">
+        <annotation
+            source="http://www.eclipse.org/oomph/setup/InducedChoices">
+          <detail
+              key="inherit">
+            <value>https://github.com/lsu-ub-uu/</value>
+          </detail>
+          <detail
+              key="label">
+            <value>cora-docker-apache</value>
+          </detail>
+          <detail
+              key="target">
+            <value>https://github.com/lsu-ub-uu/cora-docker-apache</value>
+          </detail>
+        </annotation>
+        <description>${scope.project.label}</description>
+      </setupTask>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:CompoundTask"
+        name="cora-docker-console">
+      <setupTask
+          xsi:type="maven:MavenImportTask">
+        <sourceLocator
+            rootFolder="${git.clone.cora.docker.console.location}"
+            locateNestedProjects="true"/>
+      </setupTask>
+      <setupTask
+          xsi:type="git:GitCloneTask"
+          id="git.clone.cora.docker.console"
+          location="${workspace.location}/cora-docker-console"
+          remoteURI="https://github.com/lsu-ub-uu/cora-docker-console">
+        <annotation
+            source="http://www.eclipse.org/oomph/setup/InducedChoices">
+          <detail
+              key="inherit">
+            <value>https://github.com/lsu-ub-uu/</value>
+          </detail>
+          <detail
+              key="label">
+            <value>cora-docker-console</value>
+          </detail>
+          <detail
+              key="target">
+            <value>https://github.com/lsu-ub-uu/cora-docker-console</value>
+          </detail>
+        </annotation>
+        <description>${scope.project.label}</description>
+      </setupTask>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:CompoundTask"
         name="cora-docker-gatekeeper">
       <setupTask
           xsi:type="maven:MavenImportTask">
@@ -1457,6 +1521,70 @@
           <detail
               key="target">
             <value>https://github.com/lsu-ub-uu/cora-parent</value>
+          </detail>
+        </annotation>
+        <description>${scope.project.label}</description>
+      </setupTask>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:CompoundTask"
+        name="cora-docker-shibboleth">
+      <setupTask
+          xsi:type="maven:MavenImportTask">
+        <sourceLocator
+            rootFolder="${git.clone.cora.docker.shibboleth.location}"
+            locateNestedProjects="true"/>
+      </setupTask>
+      <setupTask
+          xsi:type="git:GitCloneTask"
+          id="git.clone.cora.docker.shibboleth"
+          location="${workspace.location}/cora-docker-shibboleth"
+          remoteURI="https://github.com/lsu-ub-uu/cora-docker-shibboleth">
+        <annotation
+            source="http://www.eclipse.org/oomph/setup/InducedChoices">
+          <detail
+              key="inherit">
+            <value>https://github.com/lsu-ub-uu/</value>
+          </detail>
+          <detail
+              key="label">
+            <value>cora-docker-shibboleth</value>
+          </detail>
+          <detail
+              key="target">
+            <value>https://github.com/lsu-ub-uu/cora-docker-shibboleth</value>
+          </detail>
+        </annotation>
+        <description>${scope.project.label}</description>
+      </setupTask>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:CompoundTask"
+        name="cora-docker-varnish">
+      <setupTask
+          xsi:type="maven:MavenImportTask">
+        <sourceLocator
+            rootFolder="${git.clone.cora.docker.varnish.location}"
+            locateNestedProjects="true"/>
+      </setupTask>
+      <setupTask
+          xsi:type="git:GitCloneTask"
+          id="git.clone.cora.docker.varnish"
+          location="${workspace.location}/cora-docker-varnish"
+          remoteURI="https://github.com/lsu-ub-uu/cora-docker-varnish">
+        <annotation
+            source="http://www.eclipse.org/oomph/setup/InducedChoices">
+          <detail
+              key="inherit">
+            <value>https://github.com/lsu-ub-uu/</value>
+          </detail>
+          <detail
+              key="label">
+            <value>cora-docker-varnish</value>
+          </detail>
+          <detail
+              key="target">
+            <value>https://github.com/lsu-ub-uu/cora-docker-varnish</value>
           </detail>
         </annotation>
         <description>${scope.project.label}</description>
@@ -1548,11 +1676,43 @@
           </detail>
           <detail
               key="label">
-            <value>cora-parent</value>
+            <value>systemone-docker-fitnesse</value>
           </detail>
           <detail
               key="target">
-            <value>https://github.com/lsu-ub-uu/cora-parent</value>
+            <value>https://github.com/lsu-ub-uu/systemone-docker-fitnesse</value>
+          </detail>
+        </annotation>
+        <description>${scope.project.label}</description>
+      </setupTask>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:CompoundTask"
+        name="systemone-docker-apache">
+      <setupTask
+          xsi:type="maven:MavenImportTask">
+        <sourceLocator
+            rootFolder="${git.clone.systemone.docker.apache.location}"
+            locateNestedProjects="true"/>
+      </setupTask>
+      <setupTask
+          xsi:type="git:GitCloneTask"
+          id="git.clone.systemone.docker.apache"
+          location="${workspace.location}/systemone-docker-apache"
+          remoteURI="https://github.com/lsu-ub-uu/systemone-docker-apache">
+        <annotation
+            source="http://www.eclipse.org/oomph/setup/InducedChoices">
+          <detail
+              key="inherit">
+            <value>https://github.com/lsu-ub-uu/</value>
+          </detail>
+          <detail
+              key="label">
+            <value>systemone-docker-apache</value>
+          </detail>
+          <detail
+              key="target">
+            <value>https://github.com/lsu-ub-uu/systemone-docker-apache</value>
           </detail>
         </annotation>
         <description>${scope.project.label}</description>
@@ -2338,6 +2498,38 @@
     </setupTask>
     <setupTask
         xsi:type="setup:CompoundTask"
+        name="alvin-docker-apache">
+      <setupTask
+          xsi:type="maven:MavenImportTask">
+        <sourceLocator
+            rootFolder="${git.clone.alvin.docker.apache.location}"
+            locateNestedProjects="true"/>
+      </setupTask>
+      <setupTask
+          xsi:type="git:GitCloneTask"
+          id="git.clone.alvin.docker.apache"
+          location="${workspace.location}/alvin-docker-apache"
+          remoteURI="https://github.com/lsu-ub-uu/alvin-docker-apache">
+        <annotation
+            source="http://www.eclipse.org/oomph/setup/InducedChoices">
+          <detail
+              key="inherit">
+            <value>https://github.com/lsu-ub-uu/</value>
+          </detail>
+          <detail
+              key="label">
+            <value>alvin-docker-apache</value>
+          </detail>
+          <detail
+              key="target">
+            <value>https://github.com/lsu-ub-uu/alvin-docker-apache</value>
+          </detail>
+        </annotation>
+        <description>${scope.project.label}</description>
+      </setupTask>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:CompoundTask"
         name="alvin-docker-gatekeeper">
       <setupTask
           xsi:type="maven:MavenImportTask">
@@ -2382,6 +2574,38 @@
           id="git.clone.alvin.docker.postgresql"
           location="${workspace.location}/alvin-docker-postgresql"
           remoteURI="https://github.com/lsu-ub-uu/alvin-docker-postgresql">
+        <annotation
+            source="http://www.eclipse.org/oomph/setup/InducedChoices">
+          <detail
+              key="inherit">
+            <value>https://github.com/lsu-ub-uu/</value>
+          </detail>
+          <detail
+              key="label">
+            <value>alvin-docker-postgresql</value>
+          </detail>
+          <detail
+              key="target">
+            <value>https://github.com/lsu-ub-uu/alvin-docker-postgresql</value>
+          </detail>
+        </annotation>
+        <description>${scope.project.label}</description>
+      </setupTask>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:CompoundTask"
+        name="alvin-docker-client">
+      <setupTask
+          xsi:type="maven:MavenImportTask">
+        <sourceLocator
+            rootFolder="${git.clone.alvin.docker.client.location}"
+            locateNestedProjects="true"/>
+      </setupTask>
+      <setupTask
+          xsi:type="git:GitCloneTask"
+          id="git.clone.alvin.docker.client"
+          location="${workspace.location}/alvin-docker-client"
+          remoteURI="https://github.com/lsu-ub-uu/alvin-docker-client">
         <annotation
             source="http://www.eclipse.org/oomph/setup/InducedChoices">
           <detail
@@ -2459,6 +2683,102 @@
           <detail
               key="target">
             <value>https://github.com/lsu-ub-uu/cora-parent</value>
+          </detail>
+        </annotation>
+        <description>${scope.project.label}</description>
+      </setupTask>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:CompoundTask"
+        name="diva-client">
+      <setupTask
+          xsi:type="maven:MavenImportTask">
+        <sourceLocator
+            rootFolder="${git.clone.diva.client.location}"
+            locateNestedProjects="true"/>
+      </setupTask>
+      <setupTask
+          xsi:type="git:GitCloneTask"
+          id="git.clone.diva.client"
+          location="${workspace.location}/diva-client"
+          remoteURI="https://github.com/lsu-ub-uu/diva-client">
+        <annotation
+            source="http://www.eclipse.org/oomph/setup/InducedChoices">
+          <detail
+              key="inherit">
+            <value>https://github.com/lsu-ub-uu/</value>
+          </detail>
+          <detail
+              key="label">
+            <value>diva-client</value>
+          </detail>
+          <detail
+              key="target">
+            <value>https://github.com/lsu-ub-uu/diva-client</value>
+          </detail>
+        </annotation>
+        <description>${scope.project.label}</description>
+      </setupTask>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:CompoundTask"
+        name="diva-docker-divaclient">
+      <setupTask
+          xsi:type="maven:MavenImportTask">
+        <sourceLocator
+            rootFolder="${git.clone.diva.docker.divaclient.location}"
+            locateNestedProjects="true"/>
+      </setupTask>
+      <setupTask
+          xsi:type="git:GitCloneTask"
+          id="git.clone.diva.docker.divaclient"
+          location="${workspace.location}/diva-docker-divaclient"
+          remoteURI="https://github.com/lsu-ub-uu/diva-docker-divaclient">
+        <annotation
+            source="http://www.eclipse.org/oomph/setup/InducedChoices">
+          <detail
+              key="inherit">
+            <value>https://github.com/lsu-ub-uu/</value>
+          </detail>
+          <detail
+              key="label">
+            <value>diva-docker-divaclient</value>
+          </detail>
+          <detail
+              key="target">
+            <value>https://github.com/lsu-ub-uu/diva-docker-divaclient</value>
+          </detail>
+        </annotation>
+        <description>${scope.project.label}</description>
+      </setupTask>
+    </setupTask>
+    <setupTask
+        xsi:type="setup:CompoundTask"
+        name="diva-docker-apache">
+      <setupTask
+          xsi:type="maven:MavenImportTask">
+        <sourceLocator
+            rootFolder="${git.clone.diva.docker.apache.location}"
+            locateNestedProjects="true"/>
+      </setupTask>
+      <setupTask
+          xsi:type="git:GitCloneTask"
+          id="git.clone.diva.docker.apache"
+          location="${workspace.location}/diva-docker-apache"
+          remoteURI="https://github.com/lsu-ub-uu/diva-docker-apache">
+        <annotation
+            source="http://www.eclipse.org/oomph/setup/InducedChoices">
+          <detail
+              key="inherit">
+            <value>https://github.com/lsu-ub-uu/</value>
+          </detail>
+          <detail
+              key="label">
+            <value>diva-docker-apache</value>
+          </detail>
+          <detail
+              key="target">
+            <value>https://github.com/lsu-ub-uu/diva-docker-apache</value>
           </detail>
         </annotation>
         <description>${scope.project.label}</description>
@@ -4111,7 +4431,7 @@
       <setupTask
           xsi:type="setup:PreferenceTask"
           key="/instance/org.eclipse.jst.server.tomcat.core/locationorg.eclipse.jst.server.tomcat.runtime.110"
-          value="/opt/apache-tomcat-11.0.2"/>
+          value="/opt/apache-tomcat-11.0.13"/>
     </setupTask>
     <setupTask
         xsi:type="setup:CompoundTask"
@@ -4119,7 +4439,7 @@
       <setupTask
           xsi:type="setup:PreferenceTask"
           key="/instance/org.eclipse.wst.server.core/runtimes"
-          value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?>&#xA;&lt;runtimes>&#xA;  &lt;runtime id=&quot;Apache Tomcat v11.0&quot; location=&quot;/opt/apache-tomcat-11.0.2&quot; name=&quot;Apache Tomcat v11.0&quot; runtime-type-id=&quot;org.eclipse.jst.server.tomcat.runtime.110&quot; timestamp=&quot;0&quot;/>&#xA;&lt;/runtimes>&#xA;"/>
+          value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?>&#xA;&lt;runtimes>&#xA;  &lt;runtime id=&quot;Apache Tomcat v11.0&quot; location=&quot;/opt/apache-tomcat-11.0.13&quot; name=&quot;Apache Tomcat v11.0&quot; runtime-type-id=&quot;org.eclipse.jst.server.tomcat.runtime.110&quot; timestamp=&quot;0&quot;/>&#xA;&lt;/runtimes>&#xA;"/>
     </setupTask>
     <setupTask
         xsi:type="setup:CompoundTask"

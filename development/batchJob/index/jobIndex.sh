@@ -1,32 +1,19 @@
 #!/bin/bash
-#set -euo pipefail
 set -uo pipefail
 
 start() {
-  waitingForListOfSystemToEnsureSystemIsRunning
+  importDependencies
+  waitingForListOfSystemToEnsureSystemIsRunning "${RUNNING_URL}"
   echo "Starting indexing process..."
-  login
+#  loginUsingAppToken
+  loginUsingIdpLogin
   index
   logoutFromCora
 }
 
-waitingForListOfSystemToEnsureSystemIsRunning(){
-  echo "Waiting for application to start ..."
-  until curl -s --fail "${RECORDTYPE_URL}" > /dev/null 2>&1; do
-    sleep 5
-  done
-
-  echo "Application is ready. Running indexing script..."
-}
-
-login() {
-  echo "Logging in.."
-  local loginAnswer
-  loginAnswer=$(curl -s -X POST -H "Content-Type: application/vnd.cora.login" -k -i "${LOGIN_URL}" --data "${LOGINID}"$'\n'"${APP_TOKEN}")
-
-  AUTH_TOKEN=$(echo "${loginAnswer}" | grep -oP '(?<={"name":"token","value":")[^"]+')
-  AUTH_TOKEN_DELETE_URL=$(echo "${loginAnswer}" | grep -oP '(?<="url":")[^"]+')
-  echo "Logged in... "
+importDependencies(){
+	source "$(dirname "$0")/../login.sh"
+	source "$(dirname "$0")/../waitForSystemToBeRunning.sh"
 }
 
 index() {
@@ -91,13 +78,6 @@ indexData() {
   else
     echo "⚠️  Skipping due to missing required fields"
   fi
-}
-
-logoutFromCora() {
-  echo
-  echo "Logging out from ${AUTH_TOKEN_DELETE_URL}"
-  curl -s -X DELETE -k -H "authToken: ${AUTH_TOKEN}" -i "${AUTH_TOKEN_DELETE_URL}"
-  echo "Logged out"
 }
 
 start

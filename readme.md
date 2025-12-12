@@ -2,6 +2,13 @@
 Cora-eclipse is a project to enable easy setup of an Eclipse install for Cora development, using Eclipse and Docker.</br>
 I am running this on linux so, change as needed for other platforms.
 
+## Temporary work around for m2e-wtp not supporting java 25
+The problem manifests itself by maven update projects does not find java 25 support, and deployment does not work as expected. To fix add the following to your m2/settings.xml file (in your active profile if you have one)
+```xml
+<properties>
+	<java.release.version>24</java.release.version>
+</properties>
+```
 ## Before you begin
 1. Make sure you have git and docker set up on your local machine
 2. Make a directory where you want everything installed /x/y/z/cora (/mnt/depot/cora)
@@ -50,8 +57,8 @@ If you are uncertain use option **1. https://github.com/lsu-ub-uu/**
 There are a few things that needs to be choosen in the installer<br>
 First of all switch to **advanced mode** in the installer
  1. Browse for setup files for eclipse, **/home/yourUserName/workspace/cora-eclipse/oomph/EclipseForCora.setup** (use the plussign to add)
- 2. Product version, set it to: **2025-03 Eclipse environment for Cora**
- 3. Java 23+ VM, set it to: /usr/lib/jvm/**java-23-openjdk**
+ 2. Product version, set it to: **2025-09 Eclipse environment for Cora**
+ 3. Java 23+ VM, set it to: /usr/lib/jvm/**java-25-openjdk**
  
 next step
  
@@ -65,7 +72,7 @@ next step
  3. Fill in path for "Installation location": set it to **/home/yourUserName/eclipse**
  4. Choose Workspace location rule: **Located in the absolute folder location**
  5. Fill in path for "Workspace location": **/home/yourUserName/workspace**
- 6. Fill in path for "JRE 23 Location": **/usr/lib/jvm/java-23-openjdk**
+ 6. Fill in path for "JRE 23 Location": **/usr/lib/jvm/java-25-openjdk**
  
 next step<br>
 
@@ -87,7 +94,7 @@ update the docker plugin through the marketplace<br>
 
 ## Finishing up, your first startup of the environment
 Start the environment by running:</br>
-`./eclipse202503forcora2/startEclipseForCora.sh`
+`./eclipse202509forcora1/startEclipseForCora.sh`
 <br>
  **Do the following in the listed order to avoid problems!**
  1. Go in under preferences and make sure the latest java is choosen as default jre
@@ -205,7 +212,7 @@ Go under External Tools Configurations (play icon with toolbox) and run **checkO
 Add the following to the top of the page, then use remoteDebugging such as DivaFitnesseDebug to connect to it when testing.
 ```
 !path {java.class.path}
-!define COMMAND_PATTERN {/usr/lib/jvm/java-23-openjdk/bin/java -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000 -cp %p %m}
+!define COMMAND_PATTERN {/usr/lib/jvm/java-25-openjdk/bin/java -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000 -cp %p %m}
 ```
 
 ## Other
@@ -220,7 +227,7 @@ For alvin server go into the launch configuration / arguments under VM arguments
 ### exporting data from connected databases
 connect to shell in devEnvironment:
 
-`docker exec -it eclipse202503forcora2 bash `
+`docker exec -it eclipse202509forcora1 bash `
 
 to export data from running DiVA db run:
 `pg_dump -U diva -h diva-cora-docker-postgresql -p 5432 -t organisation diva > ~/workspace/diva-cora-docker-postgresql/docker/data/exported.sql`
@@ -230,7 +237,7 @@ to export data from running DiVA db run:
 If problems with archive test for path not found:
 enter docker:
 
-`docker exec -it eclipse202503forcora2 bash`
+`docker exec -it eclipse202509forcora1 bash`
 
 go to your home dir:
 

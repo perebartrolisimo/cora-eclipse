@@ -1,22 +1,6 @@
 #!/bin/bash
 set -uo pipefail
 
-start() {
-  importDependencies
-  waitingForListOfSystemToEnsureSystemIsRunning "${RUNNING_URL}"
-  echo "Starting indexing process..."
-#  loginUsingAppToken
-  loginUsingIdpLogin
-  index
-  logoutFromCora
-}
-
-importDependencies(){
-	SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-	source "$SCRIPT_DIR/../login.sh"
-	source "$SCRIPT_DIR/../waitForSystemToBeRunning.sh"
-}
-
 index() {
   # Get index action links
   local indexActionLinks=($(getIndexActionLinks "${RECORDTYPE_URL}"))
@@ -41,7 +25,7 @@ index() {
 getIndexActionLinks() {
   local url="$1"
   local xml
-  echo "Fetching record list XML from $url" >&2
+#  echo "Fetching record list XML from $url" >&2
   xml=$(curl -s -X GET -k -H "authToken: ${AUTH_TOKEN}" \
     -H "Accept: application/vnd.cora.recordList+xml" "$url")
 
@@ -80,5 +64,3 @@ indexData() {
     echo "⚠️  Skipping due to missing required fields"
   fi
 }
-
-start

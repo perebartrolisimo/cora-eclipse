@@ -4,12 +4,12 @@
     <mapAttribute key="org.eclipse.debug.core.environmentVariables">
         <mapEntry key="IDP_LOGIN_URL" value="http://localhost:8381/idplogin/"/>
         <mapEntry key="LOGINID" value="systemoneAdmin@system.cora.uu.se"/>
-        <mapEntry key="RECORD_URL" value="http://localhost:8081/alvin/rest/record"/>
+        <mapEntry key="RECORD_URL" value="http://localhost:8081/alvin/rest/record/"/>
         <mapEntry key="RUNNING_URL" value="http://localhost:8081/alvin/rest/record/system"/>
     </mapAttribute>
     <listAttribute key="org.eclipse.debug.ui.favoriteGroups">
         <listEntry value="org.eclipse.ui.externaltools.launchGroup"/>
     </listAttribute>
     <stringAttribute key="org.eclipse.ui.externaltools.ATTR_LOCATION" value="${workspace_loc}/cora-eclipse/development/batchJob/user/jobAddAppTokenAndCreateExampleUsers.sh"/>
-    <stringAttribute key="org.eclipse.ui.externaltools.ATTR_TOOL_ARGUMENTS" value="&quot;151515&quot; &quot;coraUser:4412566252284358&quot;"/>
+    <stringAttribute key="org.eclipse.ui.externaltools.ATTR_TOOL_ARGUMENTS" value="&quot;141414&quot; &quot;151515&quot; &quot;coraUser:4412566252284358&quot;"/>
 </launchConfiguration>
